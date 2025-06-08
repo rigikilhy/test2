@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lezione 3 Interattiva - Meccanica Razionale</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Lezione 3 - Meccanica Razionale Interattiva</h1>
+        <p>Questa pagina offre una spiegazione interattiva dei concetti chiave della Lezione 3 di Meccanica Razionale, riguardanti i sistemi di vettori applicati e i loro momenti.</p>
+    </header>
+
+    <main>
+        <section id="vettore-applicato">
+            <h2>1. Vettore Applicato</h2>
+            <p>Un <strong>vettore applicato</strong> è una coppia ordinata `(P, v)` costituita da un punto `P` detto <em>punto di applicazione</em> e da un vettore `v`. Esso descrive una quantità vettoriale (come una forza) che agisce in un punto specifico dello spazio.</p>
+            <p>La <em>retta d'azione</em> del vettore applicato è la retta passante per `P` e parallela a `v`.</p>
+            <p><strong>Esempio Reale:</strong> Immagina di premere un campanello. Il punto in cui il tuo dito tocca il campanello è il punto di applicazione P, e la forza che eserciti (con una certa intensità e direzione) è il vettore <strong>v</strong>.</p>
+            <div id="vettore-applicato-animation" class="animation-container">
+                <!-- Animazione/Interazione per Vettore Applicato verrà qui -->
+                <p style="text-align:center; padding:20px; border:1px dashed #ccc;">[Animazione: Campanello con freccia di forza al hover/click]</p>
+            </div>
+        </section>
+
+        <section id="momento-polare">
+            <h2>2. Momento Polare di un Vettore Applicato</h2>
+            <p>Il <strong>momento polare</strong> di un vettore applicato `(P, v)` rispetto a un punto `Ω` (detto <em>polo</em>) è un vettore definito come: <br> <strong>M<sub>Ω</sub>(P,v) = (P - Ω) ∧ v</strong> <br> dove `(P - Ω)` è il vettore posizione di `P` rispetto a `Ω`, e `∧` denota il prodotto vettoriale. Il momento polare misura la capacità del vettore `v` applicato in `P` di provocare una rotazione attorno al polo `Ω`. Il suo modulo è `|M_Ω| = b|v|`, dove `b` è il <em>braccio</em> (distanza perpendicolare tra `Ω` e la retta d'azione di `v`).</p>
+            <p><strong>Esempio Reale:</strong> Usare una chiave inglese per stringere un bullone. Il centro del bullone è il polo Ω. Il punto P sulla chiave dove applichi la forza <strong>v</strong> determina il vettore (P-Ω). L'effetto di rotazione che imprimi al bullone è il momento.</p>
+            <div id="momento-polare-animation" class="animation-container">
+                <!-- Animazione/Interazione per Momento Polare verrà qui -->
+                <p style="text-align:center; padding:20px; border:1px dashed #ccc;">[Animazione: Chiave inglese che ruota un bullone, con visualizzazione di P, v, Ω, e M_Ω. Slider per cambiare forza/distanza.]</p>
+            </div>
+            <p><strong>Legge di distribuzione del momento (o di trasporto):</strong> Se si cambia il polo da A a B, il nuovo momento M<sub>B</sub> si calcola come: <br><strong>M<sub>B</sub> = M<sub>A</sub> + (A - B) ∧ v</strong> <br> Questa legge è fondamentale per calcolare come varia il momento al variare del punto rispetto al quale lo si calcola.</p>
+            <div id="momento-trasporto-animation" class="animation-container">
+                 <p style="text-align:center; padding:20px; border:1px dashed #ccc;">[Animazione: Visualizzazione di come M cambia al variare del polo A -> B.]</p>
+            </div>
+        </section>
+
+        <section id="sistemi-vettori">
+            <h2>3. Sistemi di Vettori Applicati</h2>
+            <p>Un <strong>sistema di vettori applicati</strong> è un insieme finito di vettori applicati: S = {(P<sub>1</sub>, <strong>v<sub>1</sub></strong>), (P<sub>2</sub>, <strong>v<sub>2</sub></strong>), ..., (P<sub>n</sub>, <strong>v<sub>n</sub></strong>)}. Due grandezze fondamentali caratterizzano un sistema di vettori applicati: il risultante e il momento polare risultante.</p>
+
+            <h3>3.1 Risultante (R)</h3>
+            <p>Il <strong>vettore risultante</strong> (o semplicemente <em>risultante</em>) <strong>R</strong> di un sistema di vettori applicati è la somma vettoriale di tutti i vettori del sistema: <br><strong>R = Σ<sub>i</sub> v<sub>i</sub></strong> <br>Il risultante non dipende dalla scelta dei punti di applicazione P<sub>i</sub>.</p>
+            <p><strong>Esempio Reale (Risultante):</strong> Due persone che spingono una cassa in direzioni leggermente diverse. La forza combinata che determina il movimento della cassa è il risultante delle loro forze individuali.</p>
+            <div id="risultante-animation" class="animation-container">
+                <!-- Animazione/Interazione per Risultante verrà qui -->
+                <p style="text-align:center; padding:20px; border:1px dashed #ccc;">[Animazione: Due frecce (forze) che si sommano graficamente (testa-coda) per dare il risultante R su una cassa.]</p>
+            </div>
+
+            <h3>3.2 Momento Polare Risultante (M<sub>Ω</sub>)</h3>
+            <p>Il <strong>momento polare risultante</strong> <strong>M<sub>Ω</sub>(S)</strong> di un sistema di vettori S rispetto a un polo Ω è la somma vettoriale dei momenti polari dei singoli vettori del sistema, calcolati rispetto allo stesso polo Ω: <br><strong>M<sub>Ω</sub>(S) = Σ<sub>i</sub> M<sub>Ω</sub>(P<sub>i</sub>,v<sub>i</sub>) = Σ<sub>i</sub> (P<sub>i</sub> - Ω) ∧ v<sub>i</sub></strong>.</p>
+            <p><strong>Esempio Reale (Momento Risultante):</strong> Due mani che girano un volante. Ogni mano applica una forza creando un momento rispetto al centro del volante (polo Ω). Il momento risultante è la somma di questi momenti e determina la rotazione effettiva del volante.</p>
+            <div id="momento-risultante-animation" class="animation-container">
+                <!-- Animazione/Interazione per Momento Risultante verrà qui -->
+                <p style="text-align:center; padding:20px; border:1px dashed #ccc;">[Animazione: Volante con due forze applicate, visualizzazione dei momenti individuali e del momento risultante.]</p>
+            </div>
+
+            <h3>3.3 Invariante Scalare (I)</h3>
+            <p>L'<strong>invariante scalare</strong> I di un sistema di vettori applicati è definito come il prodotto scalare tra il risultante <strong>R</strong> e il momento polare risultante <strong>M<sub>Ω</sub></strong> rispetto a un qualsiasi polo Ω: <br><strong>I = R ⋅ M<sub>Ω</sub></strong> <br>Un'importante proprietà è che l'invariante scalare <em>non dipende</em> dalla scelta del polo Ω.</p>
+             <div id="invariante-scalare-animation" class="animation-container">
+                <p style="text-align:center; padding:20px; border:1px dashed #ccc;">[Animazione: Sistema di vettori, R, M_Ω. L'utente trascina Ω, M_Ω cambia ma I rimane costante (valore numerico mostrato).]</p>
+            </div>
+        </section>
+
+        <section id="coppia-vettori">
+            <h2>4. Coppia di Vettori Applicati</h2>
+            <p>Una <strong>coppia di vettori applicati</strong> (o semplicemente <em>coppia</em>) è un sistema di due vettori applicati `(P1, v1)` e `(P2, v2)` tali che il loro risultante sia nullo (<strong>v<sub>1</sub> = -v<sub>2</sub></strong>, quindi <strong>R = 0</strong>), ma i cui vettori non giacciono sulla stessa retta d'azione. Il momento di una coppia è dato da <strong>M = (P<sub>1</sub> - P<sub>2</sub>) ∧ v<sub>1</sub></strong> ed è un vettore libero, cioè <em>indipendente dalla scelta del polo</em> Ω.</p>
+            <p><strong>Esempio Reale:</strong> Avvitare o svitare un tappo di bottiglia usando il pollice e l'indice. Si applicano due forze approssimativamente uguali e opposte sui lati del tappo, generando un momento puro (una coppia) che fa ruotare il tappo.</p>
+            <div id="coppia-animation" class="animation-container">
+                <!-- Animazione/Interazione per Coppia verrà qui -->
+                <p style="text-align:center; padding:20px; border:1px dashed #ccc;">[Animazione: Due vettori opposti su un oggetto circolare, il vettore momento M mostrato costante mentre un "polo di test" Ω viene trascinato attorno.]</p>
+            </div>
+        </section>
+
+        <section id="asse-centrale">
+            <h2>5. Asse Centrale</h2>
+            <p>Per un sistema generico di vettori applicati con risultante <strong>R ≠ 0</strong>, l'<strong>asse centrale</strong> è l'unica retta nello spazio tale che, se si sceglie un qualsiasi punto Ω su di essa come polo, il momento risultante <strong>M<sub>Ω</sub></strong> è parallelo al risultante <strong>R</strong>. L'equazione dell'asse centrale può essere espressa come: <br><strong>P = (R ∧ M<sub>O</sub>) / |R|<sup>2</sup> + μR</strong> <br>dove M<sub>O</sub> è il momento risultante rispetto a un'origine O arbitraria, e μ è un parametro scalare reale (al variare di μ si ottengono tutti i punti dell'asse).</p>
+            <p><strong>Esempio Reale:</strong> Il movimento di un cacciavite mentre si avvita una vite. Il cacciavite avanza (traslazione dovuta a una forza risultante R lungo il suo asse) e contemporaneamente ruota (dovuta a un momento M parallelo a R). L'asse della vite rappresenta l'asse centrale di questo sistema di forze e momenti.</p>
+            <div id="asse-centrale-animation" class="animation-container">
+                <!-- Animazione/Interazione per Asse Centrale verrà qui -->
+                <p style="text-align:center; padding:20px; border:1px dashed #ccc;">[Animazione: Visualizzazione 3D di un sistema, il suo R, M_O, e la linea dell'asse centrale. Se un polo test è sull'asse, M_P è parallelo a R.]</p>
+            </div>
+        </section>
+
+        <section id="teorema-varignon">
+            <h2>6. Teorema di Varignon</h2>
+            <p>Il <strong>Teorema di Varignon</strong> afferma che, per un sistema di vettori applicati <em>concorrenti</em> in un punto C, {(C, <strong>v<sub>i</sub></strong>)}, il momento del loro risultante <strong>R</strong> (applicato anch'esso in C) rispetto a un qualsiasi polo Ω è uguale alla somma (vettoriale) dei momenti dei singoli vettori <strong>v<sub>i</sub></strong> (sempre applicati in C) rispetto allo stesso polo Ω. <br>Formula: <strong>M<sub>Ω</sub>(C, R) = Σ<sub>i</sub> M<sub>Ω</sub>(C, v<sub>i</sub>)</strong>.</p>
+            <p><strong>Esempio Reale:</strong> Diverse persone che tirano delle corde legate allo stesso gancio (punto di concorrenza C). L'effetto di rotazione (momento) attorno a un punto Ω, causato dalla forza risultante applicata al gancio, è la somma degli effetti di rotazione causati da ogni singola corda.</p>
+            <div id="varignon-animation" class="animation-container">
+                <p style="text-align:center; padding:20px; border:1px dashed #ccc;">[Animazione: Vettori v1, v2 concorrenti in C. Polo Ω. Mostrare M(C,v1) + M(C,v2) = M(C,R).]</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2023 - Contenuto interattivo per la Lezione 3 di Meccanica Razionale.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,545 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 900px; /* Added for better readability on wide screens */
+    color: #333;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2.2em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+h2 {
+    font-size: 1.8em;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+    margin-top: 40px; /* More space above section titles */
+    margin-bottom: 20px;
+    color: #2980b9;
+}
+
+h3 {
+    font-size: 1.4em;
+    color: #2c3e50;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+section {
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: #f9f9f9; /* Light background for sections */
+    border-radius: 8px; /* Slightly rounded corners for sections */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+}
+
+.animation-container {
+    border: 2px dashed #bdc3c7; /* Dashed border for placeholders */
+    min-height: 150px;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #ecf0f1; /* Light grey background for animation area */
+    display: flex; /* For centering placeholder text if needed */
+    justify-content: center; /* For centering placeholder text if needed */
+    align-items: center; /* For centering placeholder text if needed */
+    text-align: center; /* For placeholder text */
+    color: #7f8c8d; /* Color for placeholder text */
+    position: relative; /* Added for potential absolute positioning of children */
+}
+
+/* Specific placeholder text styling, if any, can be done via the <p> tag inside .animation-container */
+.animation-container p { /* This was for the initial placeholder text, can be removed or kept if other placeholders use it */
+    margin: 0;
+    font-style: italic;
+}
+
+/* Styling for Vettore Applicato animation elements */
+#vettore-applicato-animation {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: row; /* Align items in a row for doorbell and arrow */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    min-height: 100px; /* Ensure container has some height (already in .animation-container) */
+    position: relative; /* For absolute positioning of children if needed, though flex might handle it */
+}
+
+#doorbell {
+    font-size: 50px;
+    cursor: pointer;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    user-select: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    margin-right: 20px; /* Add some space between doorbell and arrow */
+}
+
+#doorbell:hover {
+    background-color: #e0e0e0;
+}
+
+#force-arrow {
+    /* position: absolute; */ /* No longer absolute, will flow with flexbox */
+    font-size: 30px;
+    color: red;
+    visibility: hidden; /* JS toggles this via .visible class */
+    opacity: 0; /* Start transparent */
+    transition: opacity 0.2s linear; /* Smooth fade in/out */
+    /* transform: translateY(-50%); */ /* Not needed if flex aligns items center */
+}
+
+#force-arrow.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Styling for Momento Polare animation elements */
+#momento-polare-animation svg { /* Keep this specific to avoid affecting other SVGs if any */
+    border: 1px solid black;
+    display: block;
+    margin: auto;
+    user-select: none;
+}
+
+#poleOmega {
+    fill: gray;
+}
+
+#wrenchHandle {
+    stroke: silver;
+    stroke-width: 10;
+}
+
+#pointP {
+    fill: blue;
+    cursor: grab;
+}
+
+#forceVectorLine {
+    stroke: red;
+    stroke-width: 3;
+}
+
+#forceVectorHead {
+    fill: red;
+}
+
+#momentArrowPath {
+    fill: none;
+    stroke: purple;
+    stroke-width: 3;
+}
+
+#momentTextDisplay {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    fill: black;
+}
+
+/* Styling for Risultante animation elements */
+#risultante-animation svg { /* Style for the SVG canvas of Risultante */
+    border: 1px solid #ccc; /* Lighter border for this one */
+    display: block;
+    margin: 10px auto; /* Some margin */
+}
+
+#risultante-controls {
+    display: flex;
+    flex-wrap: wrap; /* Allow sliders to wrap on smaller screens */
+    justify-content: space-around; /* Distribute space */
+    padding: 10px;
+    background-color: #f0f0f0; /* Light background for controls area */
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    margin: 5px 10px; /* Spacing around each slider group */
+    min-width: 250px; /* Ensure enough width for label, slider, value */
+}
+
+.slider-container label {
+    margin-right: 10px;
+    min-width: 70px; /* Align labels somewhat */
+}
+
+.slider-container input[type="range"] {
+    flex-grow: 1; /* Allow slider to take available space */
+    margin-right: 10px;
+}
+
+.slider-container span { /* For displaying slider value */
+    min-width: 30px; /* Space for 3 digits */
+    text-align: right;
+    font-family: monospace; /* Consistent char width for numbers */
+}
+
+/* Specific styles for resultant vector paths (can be basic for now) */
+#v1-risultante {
+    stroke: blue;
+    stroke-width: 2;
+    /* fill: none; (paths usually don't fill unless closed) */
+}
+
+#v2-risultante {
+    stroke: green;
+    stroke-width: 2;
+}
+
+#R-risultante {
+    stroke: orange;
+    stroke-width: 3;
+}
+
+/* Styling for Momento Risultante animation elements */
+#momento-risultante-animation svg {
+    border: 1px solid #b2b2b2; /* Slightly different border */
+    display: block;
+    margin: 10px auto;
+    user-select: none;
+}
+
+#momento-risultante-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #e9e9e9; /* Slightly different background */
+    border-radius: 5px;
+    margin-top: 10px;
+}
+/* .slider-container styling is reused */
+
+#mrs-v1 { /* Momento Risultante System - v1 */
+    stroke: blue;
+    stroke-width: 2;
+}
+
+#mrs-v2 { /* Momento Risultante System - v2 */
+    stroke: green;
+    stroke-width: 2;
+}
+
+#mrs-poleOmega {
+    fill: #555; /* Darker pole */
+    cursor: grab;
+}
+
+/* Default styling for moment paths, JS might override stroke color for m1, m2 */
+#mrs-m1, #mrs-m2, #mrs-mR {
+    fill: none;
+    stroke: purple; /* Default color for resultant moment */
+    stroke-width: 2;
+}
+
+#mrs-mR { /* Specific for resultant moment if different from individual ones */
+    stroke-width: 3; /* Thicker */
+    /* stroke-dasharray is set in JS, which is fine */
+}
+
+#mrs-momentText {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    fill: #333;
+}
+
+/* Styling for Momento Trasporto animation elements */
+#momento-trasporto-animation svg {
+    border: 1px solid #a0a0a0; /* Yet another border color */
+    display: block;
+    margin: 10px auto;
+    user-select: none;
+}
+
+#mt-vPath {
+    stroke: black;
+    stroke-width: 2;
+}
+
+#mt-poleA, #mt-poleB {
+    fill: #777; /* Greyish poles */
+}
+
+#mt-poleA {
+    fill: #d35400; /* Pole A - E.g., orange */
+}
+#mt-poleB {
+    fill: #2980b9; /* Pole B - E.g., blue */
+    cursor: grab;
+}
+
+#mt-momentAPath {
+    stroke: red;
+    stroke-width: 2;
+    fill: none;
+}
+
+#mt-momentBPath {
+    stroke: blue;
+    stroke-width: 2;
+    fill: none;
+}
+
+/* Styling for the (A-B)∧v term, if visualized as a path */
+/* #mt-termPath {
+    stroke: green;
+    stroke-width: 2;
+    fill: none;
+} */
+
+#mt-textDisplay {
+    font-family: Arial, sans-serif;
+    font-size: 12px; /* Slightly smaller for more text */
+    fill: #222;
+}
+
+/* Styling for Invariante Scalare animation elements */
+#invariante-scalare-animation svg {
+    border: 1px solid #95a5a6; /* Another border color */
+    display: block;
+    margin: 10px auto;
+    user-select: none;
+}
+
+#is-v1Path, #is-v2Path {
+    stroke: teal;
+    stroke-width: 2;
+    fill: none;
+}
+
+#is-RPath {
+    stroke: orange;
+    stroke-width: 2.5; /* Slightly thicker for resultant */
+    fill: none;
+}
+
+#is-poleOmega {
+    fill: #34495e; /* Dark blue/grey pole */
+    cursor: grab;
+}
+
+#is-MPath { /* Resultant Moment path */
+    stroke: purple;
+    stroke-width: 2;
+    fill: none;
+}
+
+#is-textDisplay {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    fill: #111; /* Darker text */
+}
+
+/* Styling for Coppia (Couple) animation elements */
+#coppia-animation svg {
+    border: 1px solid #7f8c8d; /* Another border color */
+    display: block;
+    margin: 10px auto;
+    user-select: none;
+}
+
+#coppia-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #ecf0f1; /* Light grey background */
+    border-radius: 5px;
+    margin-top: 10px;
+}
+/* .slider-container styling is reused */
+
+#ca-p1, #ca-p2 { /* Points of application for the couple */
+    fill: #c0392b; /* Reddish points */
+}
+
+#ca-v1Path { /* Vector v1 of the couple */
+    stroke: red;
+    stroke-width: 2;
+}
+
+#ca-v2Path { /* Vector v2 (-v1) of the couple */
+    stroke: blue;
+    stroke-width: 2;
+}
+
+#ca-mCouplePath { /* Moment of the couple */
+    stroke: purple;
+    stroke-width: 2.5; /* Slightly thicker */
+    fill: none;
+}
+
+#ca-textDisplay {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    fill: #333;
+}
+
+/* Styling for Asse Centrale (Central Axis) animation elements */
+#asse-centrale-animation svg {
+    border: 1px solid #2c3e50; /* Dark blue border */
+    display: block;
+    margin: 10px auto;
+    user-select: none;
+}
+
+/* Default for system vectors, assuming IDs like ac-v1Path, ac-v2Path */
+#ac-v1Path, #ac-v2Path, #ac-v3Path { /* Add more if system has more vectors */
+    stroke: gray; /* As per marker color */
+    stroke-width: 2;
+    fill: none;
+}
+
+#ac-RPath { /* Resultant vector */
+    stroke: orange; /* As per marker color */
+    stroke-width: 2.5;
+    fill: none;
+}
+
+#ac-poleQ { /* Draggable pole Q */
+    fill: #16a085; /* Tealish color */
+    cursor: grab;
+}
+
+#ac-M_OPath { /* Moment about origin */
+    stroke: red; /* Explicitly set, or use marker color if generic purple */
+    stroke-width: 2;
+    fill: none;
+}
+
+#ac-M_QPath { /* Moment about pole Q */
+    stroke: blue; /* Explicitly set, or use marker color if generic purple */
+    stroke-width: 2;
+    fill: none;
+}
+
+#ac-centralAxisLine {
+    stroke: #e74c3c; /* Reddish line for axis */
+    stroke-width: 1.5;
+    stroke-dasharray: "5,5"; /* Dashed line */
+}
+
+#ac-textDisplay {
+    font-family: "Courier New", Courier, monospace; /* Monospace for better alignment of numbers */
+    font-size: 12px;
+    fill: #000; /* Black text */
+}
+
+#ac-visualOrigin { /* Style for the 'O' point in Asse Centrale */
+    fill: black;
+    stroke: white;
+    stroke-width: 1px;
+}
+
+#ac-originLabel { /* Style for the 'O' label */
+    font-size: 12px;
+    fill: black;
+    font-family: "Courier New", Courier, monospace;
+}
+
+/* Styling for Teorema di Varignon animation elements */
+#varignon-animation svg {
+    border: 1px solid #1abc9c; /* Tealish border */
+    display: block;
+    margin: 10px auto;
+    user-select: none;
+}
+
+#varignon-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #f2f2f2; /* Lightest grey background */
+    border-radius: 5px;
+    margin-top: 10px;
+}
+/* .slider-container styling is reused */
+
+#var-C { /* Point of Concurrence C */
+    fill: #9b59b6; /* Purple point */
+    stroke: white;
+    stroke-width: 1px;
+}
+
+#var-C-label, #var-omega-label { /* Styling for C and Omega labels */
+    font-size: 12px;
+    font-family: sans-serif; /* Consistent with other labels */
+    fill: #333;
+}
+
+#var-poleOmega { /* Draggable pole Omega */
+    fill: #f1c40f; /* Yellow pole */
+    cursor: grab;
+}
+
+#var-v1Path {
+    stroke: blue; /* As per marker */
+    stroke-width: 2;
+    fill: none;
+}
+
+#var-v2Path {
+    stroke: green; /* As per marker */
+    stroke-width: 2;
+    fill: none;
+}
+
+#var-RPath { /* Resultant vector path */
+    stroke: orange; /* As per marker */
+    stroke-width: 2.5; /* Thicker */
+    fill: none;
+}
+
+/* Moment arcs are styled by JS with rgba for transparency, but base can be set */
+#var-m1Path, #var-m2Path, #var-mRPath {
+    stroke-width: 2;
+    fill: none;
+}
+#var-mRPath { /* Resultant moment arc can be distinct */
+    stroke-width: 3;
+    /* stroke: orange; /* Default if not overridden by JS */
+}
+
+#var-textDisplay {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 12px;
+    fill: #000;
+}
+
+
+strong {
+    color: #3498db; /* Highlight important terms, like vectors */
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #7f8c8d;
+    border-top: 1px solid #ecf0f1;
+}
