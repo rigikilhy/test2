@@ -1,4 +1,40 @@
+/* Preloader Styles */
+#preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    background: #000000 url('https://via.placeholder.com/150/FF4500/000000?text=Loading...') no-repeat center center; /* Simple text preloader */
+    /* Or a more advanced CSS preloader: */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+/* Example CSS Spinner for Preloader */
+/*
+.spinner {
+    border: 8px solid #333;
+    border-top: 8px solid #FF4500;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+*/
+
 /* General Styles */
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif; /* Fallback font */
@@ -83,7 +119,14 @@ nav ul li a {
     font-family: 'Arial Narrow', Arial, sans-serif; /* Slightly condensed for nav items */
     font-weight: bold;
     text-transform: uppercase;
+    transition: color 0.3s ease, transform 0.3s ease; /* Added for nav links */
 }
+
+nav ul li a:hover {
+    color: #FFD700; /* Metallic Gold */
+    transform: scale(1.1); /* Slight scale on hover */
+}
+
 
 /* Hero Section */
 #hero {
@@ -152,6 +195,14 @@ section {
     padding: 80px 2rem; /* Adjusted padding to account for fixed header */
     max-width: 1200px;
     margin: 0 auto;
+    opacity: 0; /* Initially hidden for scroll animation */
+    transform: translateY(50px); /* Initial offset for scroll animation */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Menu Section */
@@ -170,6 +221,12 @@ section {
     padding: 1.5rem;
     border: 1px solid #222222;
     border-left: 5px solid #FF4500; /* Fiery red accent */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added for menu items */
+}
+
+.menu-item:hover {
+    transform: translateY(-5px); /* Slight lift effect */
+    box-shadow: 0 10px 20px rgba(255, 69, 0, 0.3); /* Fiery glow */
 }
 
 .menu-item h3 {
@@ -208,13 +265,39 @@ section {
     height: 200px; /* Fixed height for consistency */
     object-fit: cover; /* Ensures image covers the area, might crop */
     border: 3px solid #FFD700; /* Metallic Gold border */
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+    position: relative; /* Needed for overlay if we add one */
 }
 
 .gallery-grid img:hover {
-    transform: scale(1.05);
+    transform: scale(1.08); /* Slightly increased scale */
     border-color: #FF4500; /* Fiery Red on hover */
+    box-shadow: 0 0 15px #FF4500; /* Fiery glow effect */
 }
+
+/* Optional: Add an overlay with text on hover for gallery images */
+/*
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+}
+.gallery-item .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+}
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+*/
 
 /* Reservations Section */
 #reservations {
