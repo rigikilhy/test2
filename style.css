@@ -1,0 +1,323 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif; /* Fallback font */
+    background-color: #000000;
+    color: #FFFFFF;
+    line-height: 1.6;
+}
+
+a {
+    color: #FF4500; /* Fiery Red */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #FFD700; /* Metallic Gold */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Impact', 'Arial Narrow Bold', sans-serif; /* Strong, condensed sans-serif */
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #FFD700; /* Metallic Gold */
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #FF4500; /* Fiery Red */
+    padding-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* Header and Navigation */
+header {
+    background-color: #000000;
+    padding: 1rem 0;
+    border-bottom: 1px solid #333333; /* Darker shade for subtle separation */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-family: 'Impact', 'Arial Narrow Bold', sans-serif;
+    font-size: 2rem;
+    color: #FF4500; /* Fiery Red */
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    font-family: 'Arial Narrow', Arial, sans-serif; /* Slightly condensed for nav items */
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Hero Section */
+#hero {
+    background: #000000 url('https://via.placeholder.com/1920x1080/000000/FF4500?text=Inferno+Grill+Hero') no-repeat center center/cover; /* Placeholder for dramatic image */
+    color: #FFFFFF;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 2rem;
+    position: relative; /* For potential overlay */
+}
+
+#hero::before { /* Optional: Dark overlay for better text readability */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+}
+
+.hero-content {
+    position: relative; /* To ensure content is above overlay */
+    z-index: 1;
+}
+
+.hero-content h1 {
+    color: #FFD700; /* Metallic Gold */
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px #000000; /* Adding shadow for better visibility */
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #CCCCCC; /* Lighter grey for subtitle */
+    text-shadow: 1px 1px 2px #000000;
+}
+
+/* Call to Action Button */
+.cta-button {
+    background-color: #FF4500; /* Fiery Red */
+    color: #FFFFFF;
+    padding: 0.8rem 2rem;
+    border: 2px solid #FF4500; /* Fiery Red */
+    border-radius: 5px; /* Slightly rounded for a modern touch */
+    font-family: 'Impact', 'Arial Narrow Bold', sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #FFD700; /* Metallic Gold */
+    color: #000000;
+    border-color: #FFD700; /* Metallic Gold */
+}
+
+/* Sections General Styling */
+section {
+    padding: 80px 2rem; /* Adjusted padding to account for fixed header */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Menu Section */
+#menu {
+    background-color: #0A0A0A; /* Slightly off-black */
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.menu-item {
+    background-color: #111111; /* Dark grey for menu items */
+    padding: 1.5rem;
+    border: 1px solid #222222;
+    border-left: 5px solid #FF4500; /* Fiery red accent */
+}
+
+.menu-item h3 {
+    color: #FFD700; /* Metallic Gold */
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.menu-item p {
+    color: #BBBBBB; /* Light grey for descriptions */
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.menu-item .price {
+    font-weight: bold;
+    color: #FF4500; /* Fiery Red */
+    font-size: 1.1rem;
+    text-align: right;
+}
+
+/* Gallery Section */
+#gallery {
+    background-color: #000000;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* Ensures image covers the area, might crop */
+    border: 3px solid #FFD700; /* Metallic Gold border */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+    border-color: #FF4500; /* Fiery Red on hover */
+}
+
+/* Reservations Section */
+#reservations {
+    background-color: #0A0A0A;
+}
+
+#reservations form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #111111;
+    border: 1px solid #222222;
+}
+
+#reservations form input,
+#reservations form button {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #333333;
+    background-color: #222222;
+    color: #FFFFFF;
+    border-radius: 3px;
+}
+
+#reservations form input::placeholder {
+    color: #888888;
+}
+
+#reservations form input:focus {
+    outline: none;
+    border-color: #FF4500; /* Fiery Red */
+    box-shadow: 0 0 5px rgba(255, 69, 0, 0.5);
+}
+
+#reservations form button {
+    grid-column: 1 / -1; /* Make button span full width if needed */
+}
+
+/* Footer */
+footer {
+    background-color: #000000;
+    color: #AAAAAA; /* Lighter grey for footer text */
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid #333333;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+/* Responsive Adjustments (Basic Example) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav ul {
+        margin-top: 1rem;
+        flex-direction: column;
+        align-items: center;
+    }
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+    #hero {
+        height: auto; /* Adjust hero height for smaller screens */
+        padding-top: 120px; /* Extra padding due to fixed header and nav changes */
+        padding-bottom: 60px;
+    }
+    .menu-grid, .gallery-grid {
+        grid-template-columns: 1fr; /* Stack items on smaller screens */
+    }
+    #reservations form {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .cta-button {
+        padding: 0.6rem 1.5rem;
+        font-size: 1rem;
+    }
+    section {
+        padding: 60px 1rem;
+    }
+}
